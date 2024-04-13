@@ -24,8 +24,8 @@ public class CategoryDisplay {
     public void displayProductsSelection(Scanner scanner) {
         while (true) {
             System.out.println("Choose a shopping category:");
-            System.out.println("1) Technology");
-            System.out.println("2) Accessories");
+            System.out.println("1) Perfume");
+            System.out.println("2) Skin Care Products");
 
             int categoryChoice;
             try {
@@ -36,10 +36,10 @@ public class CategoryDisplay {
             }
 
             if (categoryChoice == 1) {
-                displayProductsOfCategory("Technology");
+                displayProductsOfCategory("Perfumes");
                 break;
             } else if (categoryChoice == 2) {
-                displayProductsOfCategory("Accessories");
+                displayProductsOfCategory("SkinCareProducts");
                 break;
             } else {
                 System.out.println("Invalid category choice. Please enter 1 for Technology or 2 for Accessories.");

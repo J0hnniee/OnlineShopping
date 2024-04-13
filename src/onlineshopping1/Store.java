@@ -14,38 +14,50 @@ import java.util.Scanner;
  */
 public class Store {
 
-    private HashMap<Integer, Product> productsMap;  // Use a HashMap to store products with unique identifiers
+    private ArrayList<Product> products;
     private CategoryDisplay categoryDisplay;
-    private int uniqueProductNumber; // Add this field
+    private int uniqueProductNumber; 
 
     public Store() {
-        productsMap = new HashMap<>();
+        products = new ArrayList<>();
         uniqueProductNumber = 1; // Initialize the unique product number
 
-        Category technologyCategory = new Category("Technology", "Products related to technology.");
-        Category accessoryCategory = new Category("Accessories", "Various accessories for different purposes.");
+        Category perfumeCategory = new Category("Perfumes", "Products related to perfume.");
+        Category skinCareProducts = new Category("Skin Care Products", "Skin care products");
+        
 
         // Add products to the catalog with unique numbers
-        addProduct(new TechProducts(uniqueProductNumber++, "Gaming Monitor", 300, "Ultra Gaming monitor.", technologyCategory, "Full HD, 144Hz"));
-        addProduct(new TechProducts(uniqueProductNumber++, "Gaming Mouse", 250, "Light weight gaming mouse.", technologyCategory, "RGB lighting"));
-        addProduct(new TechProducts(uniqueProductNumber++, "Gaming Keyboard", 300, "Mechanical gaming keyboard.", technologyCategory, "Mechanical switches"));
-
-        addProduct(new AccessoryProducts(uniqueProductNumber++, "Mouse Pad", 50, "Smooth Mouse pad.", accessoryCategory));
-        addProduct(new AccessoryProducts(uniqueProductNumber++, "Universal Remote", 28.95, "Uses AA Batteries", accessoryCategory));
-        addProduct(new AccessoryProducts(uniqueProductNumber++, "USD 3.0 Flash", 14.99, "36GB", accessoryCategory));
+        products.add(new Perfumes(uniqueProductNumber++, "Dior Sauvage 100mL", 259, "An intense and smooth trail, mysteriously powerful in its precise freshness.", perfumeCategory));
+        products.add(new Perfumes(uniqueProductNumber++, "Sweet like Candy by Ariana Grande 100mL", 74.99, "Indulge your sweet tooth with the Ariana Grande Sweet Like Candy Eau de Parfum, a fragrance for women with fruity gourmand facets.", perfumeCategory));
+        products.add(new Perfumes(uniqueProductNumber++, "Gaming Keyboard", 300, "Mechanical gaming keyboard.", perfumeCategory));
+        
+        
 
         // Initialize the display manager with the products
-        categoryDisplay = new ProductCatalogueDisplay(new ArrayList<>(productsMap.values()));
+        categoryDisplay = new CategoryDisplay(products);
     }
 
-    // Add a product to the HashMap
-    private void addProduct(Product product) {
-        productsMap.put(product.getProductNumber(), product);
+    // Display all available products in the catalog //NOT BEING USED CURRENTLY
+    public void displayAllProducts() {
+        categoryDisplay.displayAllProducts();
+    }
+
+    // Display products in a specific category
+    public void displayCategory(String categoryName) {
+        categoryDisplay.displayProductsOfCategory(categoryName);
+    }
+
+    // Get the total number of products in the catalog
+    public int getProductCount() {
+        return products.size();
     }
 
     // Get a product from the catalog based on its number
     public Product getProductNumber(int productNumber) {
-        return productsMap.get(productNumber);
+        if (productNumber >= 1 && productNumber <= getProductCount()) {
+            return products.get(productNumber - 1);
+        }
+        return null;
     }
 
     // Allow the user to select and add products to the shopping cart
@@ -69,11 +81,11 @@ public class Store {
 
             try {
                 int productNumber = Integer.parseInt(userInput);
-                Product selectedProduct = getProductNumber(productNumber);
+                Product selectedProduct = categoryDisplay.getSelectedProduct(productNumber);
 
                 if (selectedProduct != null) {
                     cart.addItem(selectedProduct);
-                    System.out.println(selectedProduct.getName() + " added to cart.");
+                    System.out.println(selectedProduct.getProductName() + " added to cart.");
                     while (true) {
                         System.out.println("Do you want to add another item? (Y/N): ");
                         String choice = scanner.nextLine();

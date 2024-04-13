@@ -54,11 +54,13 @@ public class OnlineShoppingSystem {
         boolean isSignedUp = false;
 
         accountManager.loadUserData();
-
+        Basket cart = new Basket();
+        Store store = new Store();
+        
         User currentUser = null;
 
         while (true) {
-            System.out.println("Online Shopping System");
+            System.out.println("Online Shopping System\n");
             System.out.println("1) Register");
             System.out.println("2) Login");
             System.out.println("3) Logout");
@@ -103,10 +105,14 @@ public class OnlineShoppingSystem {
                     }
                     break;
                 case 4:
-                    // Implement product list functionality
+                    if (isSignedIn) {
+                        store.productSelection(scanner, cart);
+                    } else {
+                        System.out.println("You must log in to view products.");
+                    }
                     break;
                 case 5:
-                    // Implement view cart functionality
+                    cart.viewBasket();
                     break;
                 case 6:
                     System.out.println("Exiting the program. Goodbye!");
