@@ -23,7 +23,7 @@ public class SignInPage {
         // Attempt to log in user
         User user = userLogin.signIn(username, password);
         if (user != null) {
-            System.out.println("Login successful!");
+            System.out.println("\nWelcome " + user.getUsername() + "!");
             isLoggedIn = true; // Mark user as logged in
         } else {
             System.out.println("Invalid username or password. Please try again.");

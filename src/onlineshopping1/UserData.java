@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package onlineshopping1;
+
 import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
@@ -29,27 +30,23 @@ public class UserData {
             Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-        public List<User> loadUserData() {
+
+    public List<User> loadUserData() {
         List<User> loadedUsers = new ArrayList<>();
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(USERS_DATA));
+        try ( BufferedReader reader = new BufferedReader(new FileReader(USERS_DATA))) {
             String textLine;
             while ((textLine = reader.readLine()) != null) {
                 String[] userData = textLine.split(", ");
-                if (userData.length == 5) { // Ensure there are 5 parts in the userData array
-                    String userID = userData[0].split(": ")[1];
-                    String name = userData[1].split(": ")[1];
-                    String address = userData[2].split(": ")[1];
-                    String username = userData[3].split(": ")[1];
-                    String password = userData[4].split(": ")[1];
+                if (userData.length == 3) { // Ensure there are 3 parts in the userData array
+                    String name = userData[0].split(": ")[1];
+                    String username = userData[1].split(": ")[1];
+                    String password = userData[2].split(": ")[1];
 
                     User user = new User(name, username, password, true, true);
                     loadedUsers.add(user);
-                } 
+                }
             }
-            reader.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

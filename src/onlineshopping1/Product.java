@@ -43,5 +43,10 @@ public class Product {
         return productDescription;
     }
     
-    
+        /**
+     * @return the productCategory
+     */
+    public Category getProductCategory() {
+        return productCategory;
+    }
 }

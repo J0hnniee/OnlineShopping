@@ -22,8 +22,8 @@ public class User {
         this.name = name;
         this.username = username;
         this.password = password;
-        this.isSignedUp = false;
-        this.isSignedIn = false;
+        this.isSignedUp = isSignedUp;
+        this.isSignedIn = isSignedIn;
         this.purchaseHistory = new ArrayList();
     }
 

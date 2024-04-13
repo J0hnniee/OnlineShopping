@@ -46,7 +46,6 @@ public class OnlineShoppingSystem {
 
         }
     }*/
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -56,12 +55,14 @@ public class OnlineShoppingSystem {
 
         accountManager.loadUserData();
 
+        User currentUser = null;
+
         while (true) {
             System.out.println("Online Shopping System");
             System.out.println("1) Register");
             System.out.println("2) Login");
             System.out.println("3) Logout");
-            System.out.println("4) Product list");
+            System.out.println("4) Store");
             System.out.println("5) View Cart");
             System.out.println("6) Exit program");
             System.out.println();
@@ -79,10 +80,27 @@ public class OnlineShoppingSystem {
                     isSignedUp = accountManager.registerNewUser();
                     break;
                 case 2:
-                    isSignedIn = SignInPage.loginScreen(accountManager);
+                    if (!isSignedIn) {
+                        System.out.println("Enter your username: ");
+                        String username = scanner.nextLine().trim();
+                        System.out.println("Enter your password: ");
+                        String password = scanner.nextLine();
+                        currentUser = accountManager.signIn(username, password);
+                        if (currentUser != null) {
+                            isSignedIn = true;
+                        }
+                    } else {
+                        System.out.println("You are already logged in.");
+                    }
                     break;
                 case 3:
-                    // Implement logout functionality
+                    if (isSignedIn) {
+                        accountManager.signOut(currentUser);
+                        isSignedIn = false;
+                        currentUser = null;
+                    } else {
+                        System.out.println("You are not logged in.");
+                    }
                     break;
                 case 4:
                     // Implement product list functionality
@@ -102,6 +120,3 @@ public class OnlineShoppingSystem {
         }
     }
 }
-
-    
-   
