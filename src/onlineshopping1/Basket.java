@@ -13,19 +13,21 @@ import java.util.Scanner;
  */
 public class Basket {
 
-    private ArrayList<Product> items;
-    private ArrayList<PurchaseHistory> purchaseHistoryList;
+    private ArrayList<Product> items; // List of items in the basket
+    private ArrayList<PurchaseHistory> purchaseHistoryList; // List of purchase histories
 
     public Basket() {
         items = new ArrayList<>();
         purchaseHistoryList = new ArrayList<>();
     }
-
+    
+    // Adds an item to the basket
     public void addItem(Product product) {
         items.add(product);
         System.out.println("Item added to the basket: " + product.getProductName());
     }
 
+    // Removes an item from the basket
     public void removeItem(int index) {
         if (index >= 0 && index < items.size()) {
             Product removedProduct = items.remove(index);
@@ -35,6 +37,7 @@ public class Basket {
         }
     }
 
+    // Displays the contents of the basket and allows the user to remove items or checkout
     public void viewBasket() {
         Scanner scanner = new Scanner(System.in);
         while (true) {

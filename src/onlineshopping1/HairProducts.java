@@ -11,7 +11,7 @@ package onlineshopping1;
 public class HairProducts extends Product{
 
     private int uniqueProductNumber; // Add this field
-    private String specifications;
+    private String description;
 
     public HairProducts(int uniqueProductNumber, String name, double price, String productInfo, Category category) {
         super(name, price, productInfo, category);
@@ -19,7 +19,7 @@ public class HairProducts extends Product{
     }
 
     public String getProductInfo() {
-        return super.getProductDescription() + " Specifications: " + specifications;
+        return super.getProductDescription() + " Description: " + description;
     }
 
 }

@@ -11,48 +11,15 @@ import java.util.Scanner;
  * @author johnn
  */
 public class OnlineShoppingSystem {
-
-    /*public static void main(String[] args) {
-        System.out.println("Im eating bollos for Iftaarrr!\n");
-        System.out.println("Welcome to our Online Shopping System!");
-
-        AccountManager accountManager = new AccountManager();
-        boolean isSignedIn = false;
-        boolean isSignedUp = false;
-
-        Scanner scan = new Scanner(System.in);
-        String s = scan.nextLine();
-
-        while (true) {
-            System.out.println("1) Login");
-            System.out.println("2) Logout");
-            System.out.println("3) Signup");
-            System.out.println("4) Store");
-            System.out.println("5) View cart");
-            System.out.println("6) Exit store");
-
-            try {
-                int option = Integer.parseInt(s.trim());
-                switch (option) {
-                    case 1:
-                        if (isSignedUp) {
-                            accountManager.registerNewUser();
-                        }
-
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Please enter a number");
-            }
-
-        }
-    }*/
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+         // Initialize account manager, cart, store, and current user variables
         AccountManager accountManager = new AccountManager();
         boolean isSignedIn = false;
         boolean isSignedUp = false;
 
+        // load user data from the user_data file
         accountManager.loadUserData();
         Basket cart = new Basket();
         Store store = new Store();
@@ -60,7 +27,8 @@ public class OnlineShoppingSystem {
         User currentUser = null;
 
         while (true) {
-            System.out.println("Online Shopping System\n");
+            System.out.println("Group 50 Online Store\n");
+            // Display menu options
             System.out.println("1) Register");
             System.out.println("2) Login");
             System.out.println("3) Logout");
@@ -78,9 +46,11 @@ public class OnlineShoppingSystem {
             }
 
             switch (choice) {
+                // Call method to register a new user
                 case 1:
                     isSignedUp = accountManager.registerNewUser();
                     break;
+                // Login user if not already signed in
                 case 2:
                     if (!isSignedIn) {
                         System.out.println("Enter your username: ");
@@ -95,6 +65,7 @@ public class OnlineShoppingSystem {
                         System.out.println("You are already logged in.");
                     }
                     break;
+                // Logout current user if signed in
                 case 3:
                     if (isSignedIn) {
                         accountManager.signOut(currentUser);
@@ -104,6 +75,7 @@ public class OnlineShoppingSystem {
                         System.out.println("You are not logged in.");
                     }
                     break;
+                // Access store if logged in
                 case 4:
                     if (isSignedIn) {
                         store.productSelection(scanner, cart);
@@ -111,9 +83,11 @@ public class OnlineShoppingSystem {
                         System.out.println("You must log in to view products.");
                     }
                     break;
+                // View items in the cart
                 case 5:
                     cart.viewBasket();
                     break;
+                // Exit the program
                 case 6:
                     System.out.println("Exiting the program. Goodbye!");
                     System.exit(0);
