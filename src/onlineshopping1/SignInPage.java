@@ -11,12 +11,14 @@ import java.util.Scanner;
  * @author johnn
  */
 public class SignInPage {
+    
+    // Method to display login screen and attempt user login
     public static boolean loginScreen(AccountManager userLogin) {
         Scanner scanner = new Scanner(System.in);
         boolean isLoggedIn = false;
         
         System.out.print("Username: ");
-        String username = scanner.nextLine();
+        String username = scanner.nextLine(); 
         System.out.print("Password: ");
         String password = scanner.nextLine();
 
@@ -29,6 +31,6 @@ public class SignInPage {
             System.out.println("Invalid username or password. Please try again.");
         }
         
-        return isLoggedIn;
+        return isLoggedIn; // Return the login status
     }
 }

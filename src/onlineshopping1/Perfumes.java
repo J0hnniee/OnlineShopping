@@ -10,16 +10,17 @@ package onlineshopping1;
  */
 public class Perfumes extends Product {
 
-    private int uniqueProductNumber; // Add this field
-    private String specifications;
+    private int uniqueProductNumber; // Unique identifier for each perfume
+    private String description; // Perfume Description
 
     public Perfumes(int uniqueProductNumber, String name, double price, String productInfo, Category category) {
         super(name, price, productInfo, category);
         this.uniqueProductNumber = uniqueProductNumber; // Set the unique product number
     }
 
+    // Get the product description
     public String getProductInfo() {
-        return super.getProductDescription() + " Specifications: " + specifications;
+        return super.getProductDescription() + " Description: " + description;
     }
 
 }

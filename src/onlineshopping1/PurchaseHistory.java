@@ -22,12 +22,15 @@ public class PurchaseHistory {
         this.fullName = fullName;
     }
 
+    //Override the toString method to customize the string representation of PurchaseHistory objects
     @Override
     public String toString() {
         StringBuilder products = new StringBuilder();
+        // Loop through the purchased products and append their names to their StringBuilder
         for (Product product: purchasedProducts) {
             products.append(product.getProductName()).append(", ");
         }
+        // Create a string representation including total price, purchased items, and full name
         return "Total Price: $" + totalPrice + ", Items: " + products.toString()
                 + "Full Name: " + fullName;
     }

@@ -57,16 +57,6 @@ public class CategoryDisplay {
         }
     }
 
-    // Display all products
-    public void displayAllProducts() {
-        System.out.println("Product List:");
-        int productNumber = 1;
-        for (Product product : products) {
-            System.out.println(productNumber + ") " + product.getProductCategory().getCategoryName() + " - " + product.getProductName() + " - $" + product.getProductPrice() + " " + product.getProductDescription());
-            productNumber++;
-        }
-    }
-
     // Get the selected product based on its position in the list
     public Product getSelectedProduct(int productNumber) {
         if (productNumber >= 1 && productNumber <= totalProductCount) { // Use totalProductCount

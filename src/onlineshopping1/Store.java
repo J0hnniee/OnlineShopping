@@ -42,11 +42,6 @@ public class Store {
         categoryDisplay = new CategoryDisplay(products);
     }
 
-    // Display all available products in the catalog //NOT BEING USED CURRENTLY
-    public void displayAllProducts() {
-        categoryDisplay.displayAllProducts();
-    }
-
     // Display products in a specific category
     public void displayCategory(String categoryName) {
         categoryDisplay.displayProductsOfCategory(categoryName);

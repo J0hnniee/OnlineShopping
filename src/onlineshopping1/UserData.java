@@ -17,6 +17,7 @@ public class UserData {
 
     public static final String USERS_DATA = "./userdata/users_data.txt";
 
+    // Method to save user data to the file
     public void savedUserData(User user) {
         try {
             // Open a BufferedWriter to append to the user data file
@@ -31,6 +32,7 @@ public class UserData {
         }
     }
 
+    // Method to load user data from the file
     public List<User> loadUserData() {
         List<User> loadedUsers = new ArrayList<>();
 
@@ -43,6 +45,7 @@ public class UserData {
                     String username = userData[1].split(": ")[1];
                     String password = userData[2].split(": ")[1];
 
+                    // Create a new User object using the extracted data and add it to the list
                     User user = new User(name, username, password, true, true);
                     loadedUsers.add(user);
                 }
