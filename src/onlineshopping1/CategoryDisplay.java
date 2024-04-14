@@ -25,7 +25,7 @@ public class CategoryDisplay {
         while (true) {
             System.out.println("Choose a shopping category:");
             System.out.println("1) Perfume");
-            System.out.println("2) Skin Care Products");
+            System.out.println("2) Hair Products");
 
             int categoryChoice;
             try {
@@ -39,17 +39,16 @@ public class CategoryDisplay {
                 displayProductsOfCategory("Perfumes");
                 break;
             } else if (categoryChoice == 2) {
-                displayProductsOfCategory("SkinCareProducts");
+                displayProductsOfCategory("Hair Products");
                 break;
             } else {
-                System.out.println("Invalid category choice. Please enter 1 for Technology or 2 for Accessories.");
+                System.out.println("Invalid category choice. Please enter 1 for Perfumes or 2 for Hair Products.");
             }
         }
     }
 
     // Display products within a specific category
     public void displayProductsOfCategory(String categoryName) {
-        System.out.println(categoryName + " Product List");
         for (int i = 0; i < products.size(); i++) {
             Product product = products.get(i);
             if (product.getProductCategory().getCategoryName().equalsIgnoreCase(categoryName)) {

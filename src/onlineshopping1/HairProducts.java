@@ -8,12 +8,12 @@ package onlineshopping1;
  *
  * @author johnn
  */
-public class SkinCareProducts extends Product{
+public class HairProducts extends Product{
 
     private int uniqueProductNumber; // Add this field
     private String specifications;
 
-    public SkinCareProducts(int uniqueProductNumber, String name, double price, String productInfo, Category category) {
+    public HairProducts(int uniqueProductNumber, String name, double price, String productInfo, Category category) {
         super(name, price, productInfo, category);
         this.uniqueProductNumber = uniqueProductNumber; // Set the unique product number
     }
